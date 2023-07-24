@@ -2,11 +2,13 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import MyRouteLayout from './App/screens/Login/LoginRoute'
+import ErrorPageLogin from './App/screens/Login/ErrorPageLogin'
 import Login from './App/screens/Login/Login'
 import Signup from './App/screens/Login/Signup'
 import ForgotPassword from './App/screens/Login/ForgotPassword'
 
 import HomeRoute from './App/screens/Home/HomeRoute'
+import ErrorPageHome from './App/screens/Home/ErrorPageHome'
 import Home from './App/screens/Home/Home'
 
 
@@ -14,7 +16,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <MyRouteLayout />,
-        errorElement: <h2>This is error page...</h2>,
+        errorElement: <ErrorPageLogin />,
         children: [
             { path: '/', element: <Login /> },
             { path: '/login', element: <Login /> },
@@ -25,8 +27,9 @@ const router = createBrowserRouter([
     {
         path: '/home',
         element: <HomeRoute />,
+        errorElement: <ErrorPageHome />,
         children: [
-            { path: '/home', element: <Home /> },
+            { path: '/home', element: <Home />, errorElement: <ErrorPageHome />, },
         ]
     },
 ])
