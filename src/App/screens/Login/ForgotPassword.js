@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import styles from './styles/Login.module.css'
 import MyInputComp from '../../components/UI/MyInput'
 
@@ -16,14 +17,9 @@ const ForgotPassword = () => {
         setUsername(val)
     }
     const onBlurUsernamedHandler = () => {
-        if (username.trim() === '') {
-            setUsernameError(true)
-        }
-        else {
-            username?.length < 6
-                ? setUsernameError(true)
-                : setUsernameError(false)
-        }
+        username?.length < 6
+            ? setUsernameError(true)
+            : setUsernameError(false)
     }
     const emailHandler = (event) => {
         var val = event?.target?.value
@@ -31,7 +27,6 @@ const ForgotPassword = () => {
         setEmail(val)
     }
     const onBlurEmailHandler = () => {
-
         if (email.trim() === '' || !email.includes('@') || !email.includes('.')) {
             setEmailError(true)
         }
@@ -49,7 +44,6 @@ const ForgotPassword = () => {
             setUsernameError(false)
             setEmail('')
             setEmailError(false)
-            localStorage.setItem('Login', true)
             alert(`Check your ${email} email for varification!`)
         }
     }

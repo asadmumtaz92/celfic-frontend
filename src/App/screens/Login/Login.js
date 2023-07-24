@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 import styles from './styles/Login.module.css'
 import MyInput from '../../components/UI/MyInput'
 import ImagesBox from '../../components/Login/ImagesBox'
@@ -7,6 +8,7 @@ import ImagesBox from '../../components/Login/ImagesBox'
 
 const Login = () => {
 
+    const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [usernameError, setUsernameError] = useState(false)
     const [password, setPassword] = useState('')
@@ -18,27 +20,17 @@ const Login = () => {
         setUsername(val)
     }
     const onBlurUsernamedHandler = () => {
-        if (username.trim() === '') {
-            setUsernameError(true)
-        }
-        else {
-            username?.length < 6
-                ? setUsernameError(true)
-                : setUsernameError(false)
-        }
+        username?.length < 6
+            ? setUsernameError(true)
+            : setUsernameError(false)
     }
     const passwordHandler = (event) => {
         setPassword(event?.target?.value)
     }
     const onBlurPasswordHandler = () => {
-        if (password.trim() === '') {
-            setPasswordError(true)
-        }
-        else {
-            password?.length < 6
-                ? setPasswordError(true)
-                : setPasswordError(false)
-        }
+        password?.length < 6
+            ? setPasswordError(true)
+            : setPasswordError(false)
     }
     const restart = () => {
         setUsername('')
@@ -47,14 +39,15 @@ const Login = () => {
         setPasswordError(false)
     }
 
-    let disabled = (username?.length < 6 || username || password?.length < 6 || passwordError) ? true : false
+    let disabled = (username?.length < 6 || usernameError || password?.length < 6 || passwordError) ? true : false
 
     const submitFormHandler = (event) => {
         event.preventDefault()
         if (!disabled) {
             restart()
-            localStorage.setItem('Login', true)
-            alert(`Login Successfully!`)
+            localStorage.setItem('login', '1')
+            localStorage.setItem('username', username)
+            navigate('/home')
         }
     }
 
