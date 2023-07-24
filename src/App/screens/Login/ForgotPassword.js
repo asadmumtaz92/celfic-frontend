@@ -61,7 +61,7 @@ const ForgotPassword = () => {
             <div className={`row justify-content-center mt-5 pt-5`}>
                 <div className={`col-sm-7 col-md-5 col-lg-4 col-xl-4 m-2 p-4 rounded ${styles.rightDiv}`}>
                     <div className={`mt-2 ${styles.avatar}`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="#FFFFFF" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="#FFFFFF" className="bi bi-person-fill" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                         </svg>
                     </div>
@@ -85,8 +85,8 @@ const ForgotPassword = () => {
                             onBlurHandler={onBlurEmailHandler}
                             placeholder='Enter valid email'
                         />
-                        {usernameError && <p style={{margin:0, color: 'red'}}>Enter minimum 6 character usename</p>}
-                        {emailError && <p style={{ margin: 0, color: 'red' }}>Enter valid email</p>}
+                        {usernameError === true && <p style={{margin:0, color: 'red'}}>Enter minimum 6 character usename</p>}
+                        {emailError === true && <p style={{ margin: 0, color: 'red' }}>Enter valid email</p>}
 
                         <div className={`row justify-content-center mt-4`}>
                             <button type="submit" className={`btn btn-info text-black pr-5 pl-5`} style={{ width: '94%' }}>

@@ -83,7 +83,7 @@ const Login = () => {
                         <div className={`row justify-content-center`}>
                             <div className={`col-sm-8 col-md-12 col-lg-10 col-xl-8 mt-2 p-4 rounded ${styles.rightDiv}`}>
                                 <div className={`mt-2 ${styles.avatar}`}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="#FFFFFF" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="#FFFFFF" className="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                     </svg>
                                 </div>

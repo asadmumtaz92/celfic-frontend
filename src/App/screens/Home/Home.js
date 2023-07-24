@@ -97,7 +97,7 @@ const Home = (props) => {
 
     const AllPosts = () => {
         return Posts.map(item => {
-            return  <Post data={item} />
+            return  <Post data={item} key={item?.id} />
         })
     }
 
@@ -117,11 +117,11 @@ const Home = (props) => {
             <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{ borderRight: '0.6px solid #C3C3C3' }}>
                 <div>
                     <h4>Your Challenges</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i class="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
                 <div style={{ marginTop: '100vh' }}>
                     <h4>Tags</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i class="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
         )
@@ -131,11 +131,11 @@ const Home = (props) => {
             <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{ borderLeft: '0.6px solid #C3C3C3' }}>
                 <div>
                     <h4>Suggations</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i class="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
                 <div style={{ marginTop: '75vh' }}>
                     <h4>Advertisement</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i class="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
         )
