@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './styles/Post.module.css'
 
 
@@ -26,9 +27,9 @@ const Post = ({ data }) => {
                 <div className={`${styles.postDetail}`}>
                     {/* NAME */}
                     <h6 className={`text-uppercase m-0 mt-1 font-weight-bold`}>
-                        <a href={`/${data?.username}`} className={`text-dark`}>
+                        <Link to={`/${data?.username}`} className={`text-dark`}>
                             {data?.username}
-                        </a>
+                        </Link>
                     </h6>
                     <p className={`m-0`} style={{ fontSize: 13 }}>
                         {data?.dateTime}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './styles/Login.module.css'
 import MyInput from '../../components/UI/MyInput'
 import Header from '../../Headers/LoginHeader'
@@ -119,7 +120,7 @@ const Login = () => {
                                 </form>
                                 <hr style={{ height: 2, color: '#C3C3C3', marginTop: 25 }} />
                                 <div>
-                                    <a href='/recover-password'>Forgot Password?</a>
+                                    <Link to='/recover-password'>Forgot Password?</Link>
                                 </div>
                             </div>
                         </div>

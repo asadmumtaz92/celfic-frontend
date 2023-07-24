@@ -1,6 +1,6 @@
 import React from 'react'
 // import styles from './styles/Home.module.css'
-import Header from '../../Headers/HomeHeader'
+import Header from '../../Headers/Header'
 import Footer from '../../components/UI/Footer'
 import Post from '../../components/Home/Post'
 
@@ -21,8 +21,8 @@ const Home = (props) => {
         },
         {
             id: 2,
-            userPhoto: 'https://images.unsplash.com/photo-1561829252-dfd5dbaedcf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZsb3dlcnMlMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-            username: 'username',
+            userPhoto: '',//'https://images.unsplash.com/photo-1561829252-dfd5dbaedcf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZsb3dlcnMlMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+            username: 'AsadMumtaz92',
             dateTime: '2 Jan 23 at 1:34 AM',
             visibility: 'public',
             description: 'This is my description text about nature.',
