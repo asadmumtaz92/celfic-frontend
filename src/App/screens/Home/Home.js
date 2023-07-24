@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import styles from './styles/Home.module.css'
 import Post from '../../components/Home/Post'
 
 
 const Home = () => {
 
+    const [products, setProducts] = useState([])
+    const [orders, setOrders] = useState([])
     const Posts = [
         {
             id: 1,
@@ -117,7 +119,12 @@ const Home = () => {
             <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{ borderRight: '0.6px solid #C3C3C3' }}>
                 <div>
                     <h4>Your Challenges</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    {products?.length > 0
+                        ? <ul>
+                            {products.map(item => <li className={`text-left`} key={item?.id}>{item?.name}</li> )}
+                        </ul>
+                        : <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    }
                 </div>
                 <div style={{ marginTop: '100vh' }}>
                     <h4>Tags</h4>
@@ -131,15 +138,75 @@ const Home = () => {
             <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{ borderLeft: '0.6px solid #C3C3C3' }}>
                 <div>
                     <h4>Suggations</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    {orders?.length > 0
+                        ? <ul>
+                            {orders.map(item => {
+                                // let orderData = item?.item
+                                // let userInfo = orderData?.userInfo
+                                // let orderDetail = orderData?.orderDetail
+                                // let paymentDetail = orderData?.paymentDetail
+                                return (
+                                    <li className={`text-left text-uppercase m-2`}>{item?.userInfo?.name}</li>
+                                )
+                            })}
+                        </ul>
+                        : <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
+                    }
                 </div>
-                <div style={{ marginTop: '75vh' }}>
+                <div style={{ marginTop: '50vh' }}>
                     <h4>Advertisement</h4>
                     <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
         )
     }
+
+    const fetchProducts = async () => {
+        const response = await fetch('https://reactjs-app-aa583-default-rtdb.firebaseio.com/meals.json')
+
+        if (!response.ok) {
+            throw new Error(response?.statusText);
+        }
+
+        let data = await response.json()
+        const loadedItems = []
+
+        for (const key in data) {
+            loadedItems.push({
+                id: key,
+                name: data[key].name,
+                description: data[key].description,
+                price: data[key].price,
+                logo: data[key].logo,
+            })
+        }
+        setProducts(loadedItems)
+    }
+
+    const fetchOrders = async () => {
+        const response = await fetch('https://reactjs-app-aa583-default-rtdb.firebaseio.com/orders.json')
+
+        if (!response.ok) {
+            throw new Error(response?.statusText);
+        }
+
+        let data = await response.json()
+        const loadedItems = []
+
+        for (const key in data) {
+            loadedItems.push({
+                products: data[key].products,
+                userInfo: data[key].userInfo,
+                paymentDetail: data[key].paymentDetail,
+                orderDetail: data[key].orderDetail
+            })
+        }
+        setOrders(loadedItems)
+    }
+    useEffect(() => {
+        fetchProducts()
+        fetchOrders()
+    },[])
 
 
     return (
