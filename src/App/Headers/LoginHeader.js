@@ -1,8 +1,15 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect } from 'react'
+
+import { NavLink , useNavigate } from 'react-router-dom'
 import styles from './styles/LoginHeader.module.css'
 
 const Header = () => {
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        const loginStatus = localStorage.getItem('login')
+        loginStatus === '1' && navigate('/home')
+    })
 
     return (
         <div className={`row col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-white ${styles.header}`}>
