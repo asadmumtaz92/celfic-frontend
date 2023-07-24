@@ -53,10 +53,26 @@
     outline: none;
     border: none;
 }
-.link:hover {
+.link:hover, .activeLink:hover {
     background-color: #b2b8b62d;
     color: #000000;
     text-decoration: none;
+}
+
+.activeLink {
+    padding: 0;
+    margin: 0;
+    background-color: #b2b8b62d;
+    text-transform: uppercase;
+    justify-content: center;
+    text-decoration: none;
+    align-self: center;
+    text-align: center;
+    padding: 0px 30px;
+    font-weight: 700;
+    padding-top: 7px;
+    cursor: pointer;
+    color: #000000;
 }
 
 .userTabBtn {

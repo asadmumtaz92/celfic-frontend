@@ -29,7 +29,39 @@ const router = createBrowserRouter([
         element: <HomeRoute />,
         errorElement: <ErrorPageHome />,
         children: [
-            { path: '/home', element: <Home />, errorElement: <ErrorPageHome />, },
+            { path: '/home', element: <Home />, errorElement: <ErrorPageHome /> }
+        ]
+    },
+    {
+        path: '/profile',
+        element: <HomeRoute />,
+        errorElement: <ErrorPageHome />,
+        children: [
+            { path: '/profile', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is profile page...</h2>, errorElement: <ErrorPageHome />, },
+        ]
+    },
+    {
+        path: '/globe',
+        element: <HomeRoute />,
+        errorElement: <ErrorPageHome />,
+        children: [
+            { path: '/globe', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is globe page...</h2>, errorElement: <ErrorPageHome />, },
+        ]
+    },
+    {
+        path: '/notifications',
+        element: <HomeRoute />,
+        errorElement: <ErrorPageHome />,
+        children: [
+            { path: '/notifications', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is notifications page...</h2>, errorElement: <ErrorPageHome />, },
+        ]
+    },
+    {
+        path: '/chat',
+        element: <HomeRoute />,
+        errorElement: <ErrorPageHome />,
+        children: [
+            { path: '/chat', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is chat page...</h2>, errorElement: <ErrorPageHome />, },
         ]
     },
 ])

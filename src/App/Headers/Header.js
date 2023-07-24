@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
-import { Link } from 'react-router-dom'
-import styles from './styles/HomeHeader.module.css'
+import { NavLink } from 'react-router-dom'
+import styles from './styles/Header.module.css'
 
 
 const Header = () => {
@@ -15,21 +15,36 @@ const Header = () => {
             <h2 className={`${styles.logo}`}>Celfic</h2>
 
             <div className={`${styles.menuDiv}`}>
-                <Link to='/profile' className={`${styles.link}`}>
+                <NavLink to='/profile'
+                    className={({ isActive }) => isActive ? styles.activeLink : styles.link}
+                    end
+                >
                     <i class="bi bi-person" style={{ fontSize: 25 }}></i>
-                </Link>
-                <Link to='/home' className={`${styles.link}`} style={{ fontSize: 25, borderBottom: activeScreen == 'home' ? '3px solid' :'none' }}>
+                </NavLink>
+                <NavLink to='/home'
+                    className={({ isActive }) => isActive ? styles.activeLink : styles.link}
+                    end
+                >
                     <i class="bi bi-house" style={{ fontSize: 25 }}></i>
-                </Link>
-                <Link to='/globle' className={`${styles.link}`}>
+                </NavLink>
+                <NavLink to='/globe'
+                    className={({ isActive }) => isActive ? styles.activeLink : styles.link}
+                    en
+                >
                     <i class="bi bi-globe2" style={{ fontSize: 25 }}></i>
-                </Link>
-                <Link to='/notifi' className={`${styles.link}`}>
+                </NavLink>
+                <NavLink to='/notifications'
+                    className={({ isActive }) => isActive ? styles.activeLink : styles.link}
+                    end
+                >
                     <i class="bi bi-bell" style={{ fontSize: 25 }}></i>
-                </Link>
-                <Link to='/chat' className={`${styles.link}`}>
+                </NavLink>
+                <NavLink to='/chat'
+                    className={({ isActive }) => isActive ? styles.activeLink : styles.link}
+                    end
+                >
                     <i class="bi bi-chat-left" style={{ fontSize: 25 }}></i>
-                </Link>
+                </NavLink>
                 {/* <a href='/setting' className={`${styles.link}`}><i class="bi bi-gear" style={{ fontSize: 25 }}></i></a> */}
                 {/* <a href='/logout' className={`${styles.link}`}><i class="bi bi-box-arrow-right" style={{fontSize: 25}}></i></a> */}
             </div>
