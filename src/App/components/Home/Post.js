@@ -27,7 +27,7 @@ const Post = ({ data }) => {
                 <div className={`${styles.postDetail}`}>
                     {/* NAME */}
                     <h6 className={`text-uppercase m-0 mt-1 font-weight-bold`}>
-                        <Link to={`/${data?.username}`} className={`text-dark`}>
+                        <Link to={`/profile/${data?.username}`} className={`text-dark`}>
                             {data?.username}
                         </Link>
                     </h6>

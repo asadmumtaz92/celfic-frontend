@@ -3,13 +3,13 @@ import React from 'react'
 import Post from '../../components/Home/Post'
 
 
-const Home = (props) => {
+const Home = () => {
 
     const Posts = [
         {
             id: 1,
             userPhoto: 'https://cdn.pixabay.com/photo/2020/02/28/05/23/aesthetic-4886533_960_720.jpg',
-            username: 'username',
+            username: 'AsadMumtaz92',
             dateTime: '24 Jan 23 at 11:04 PM',
             visibility: 'private',
             description: 'This is my description text about nature.',
@@ -20,7 +20,7 @@ const Home = (props) => {
         {
             id: 2,
             userPhoto: '',//'https://images.unsplash.com/photo-1561829252-dfd5dbaedcf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZsb3dlcnMlMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-            username: 'AsadMumtaz92',
+            username: 'sh4mi',
             dateTime: '2 Jan 23 at 1:34 AM',
             visibility: 'public',
             description: 'This is my description text about nature.',
