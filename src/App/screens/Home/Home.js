@@ -1,7 +1,5 @@
 import React from 'react'
 // import styles from './styles/Home.module.css'
-import Header from '../../Headers/Header'
-import Footer from '../../components/UI/Footer'
 import Post from '../../components/Home/Post'
 
 
@@ -146,8 +144,6 @@ const Home = (props) => {
 
     return (
         <div className={`container-fluid mt-5 pt-3`}>
-            <Header />
-
             <div className={`row`}>
 
                 <LeftSide />
@@ -155,8 +151,6 @@ const Home = (props) => {
                 <RightSide />
 
             </div>
-        
-            <Footer />
         </div>
     )
 }

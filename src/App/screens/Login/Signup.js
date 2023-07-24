@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styles from './styles/Login.module.css'
 import MyInputComp from '../../components/UI/MyInput'
-import Header from '../../Headers/LoginHeader'
 import ImagesBox from '../../components/Login/ImagesBox'
 
 
@@ -109,7 +108,6 @@ const SignUp = () => {
 
     return (
         <div className={`container-fluid`}>
-            <Header />
 
             <div className={`row justify-content-center mt-5 pt-1`}>
                 <div className={`row col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 p-4`}>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styles from './styles/Login.module.css'
 import MyInputComp from '../../components/UI/MyInput'
-import Header from '../../Headers/LoginHeader'
 
 
 const ForgotPassword = () => {
@@ -58,7 +57,6 @@ const ForgotPassword = () => {
 
     return (
         <div className={`container-flud`}>
-            <Header />
 
             <div className={`row justify-content-center mt-5 pt-5`}>
                 <div className={`col-sm-7 col-md-5 col-lg-4 col-xl-4 m-2 p-4 rounded ${styles.rightDiv}`}>
