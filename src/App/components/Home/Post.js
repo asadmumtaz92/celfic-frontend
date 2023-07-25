@@ -45,9 +45,17 @@ const Post = ({ data, modalDataHandler }) => {
                 </div>
                 {/* MENU ICON */}
                 <div className={`${styles.menuBox}`}>
-                    <button onClick={()=>{alert('Show post settings modal')}} className={`${styles.menuIconButton}`}>
-                        <i className="bi bi-three-dots-vertical" style={{fontSize: 20}}></i>
-                    </button>
+                    <div class="btn-group">
+                        <button type="button" className={`${styles.menuIconButton}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i className="bi bi-three-dots-vertical" style={{ fontSize: 20 }}></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <Link class="dropdown-item" to={`/post/${data?.id}/edit`}>Edit</Link>
+                            <Link class="dropdown-item" to={`/post/${data?.id}/report`}>Report</Link>
+                            <div class="dropdown-divider"></div>
+                            <Link class="dropdown-item" to={`/post/${data?.id}/delete`}>Delete</Link>
+                        </div>
+                    </div>
                 </div>
             </div>
             {/* POST DESCRIPTION/MEDIA */}
@@ -55,7 +63,8 @@ const Post = ({ data, modalDataHandler }) => {
                 {data?.description && <p className={`m-1 pb-1`}>{data?.description}</p>}
                 {data?.postMedia &&
                     <button
-                        onClick={() => { modalDataHandler(data)}}
+                        onClick={() => { modalDataHandler(data) }}
+                        type='submit'
                         data-toggle="modal" data-target="#postDetailModal"
                         className={`${styles.menuIconButton}`}
                     >
