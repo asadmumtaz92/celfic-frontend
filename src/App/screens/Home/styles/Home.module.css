@@ -39,3 +39,18 @@ html {
     flex-direction: column;
     display: flex;
 }
+
+.leftbox, .rightbox, .centerbox {
+    height: 95vh;
+    overflow: scroll;
+}
+@media (min-width: 300px) and (max-width: 767px) {
+    .leftbox {
+        display: none;
+    }
+}
+@media (min-width: 300px) and (max-width: 991px) {
+    .rightbox {
+        display: none;
+    }
+}

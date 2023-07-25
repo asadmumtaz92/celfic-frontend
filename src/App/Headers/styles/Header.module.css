@@ -90,3 +90,28 @@
 .userTabBtn:hover {
     background-color: #b2b8b62d;
 }
+.menuee {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    padding: 0px 20px;
+    display: none;
+    height: 100%;
+}
+@media (min-width: 300px) and (max-width: 767px) {
+    .logo, .userr {
+        display: none;
+    }.menuee {
+        display: block;
+    }
+}
+/* @media (min-width: 300px) and (max-width: 576px) {
+    .userr{
+        display: none;
+    }
+    .menuee {
+        display: block;
+    }
+} */

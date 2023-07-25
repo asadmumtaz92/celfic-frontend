@@ -108,9 +108,9 @@ const Home = () => {
     }
     const CenteredData = () => {
         return (
-            <div className={`col-sm-11 col-md-11 col-lg-6 col-xl-6`}>
-                <div className={`row justify-content-center `}>
-                    <div className={`col-sm-11 col-md-11 col-lg-10 col-xl-10`} style={{height: '92vh', overflow:'scroll'}}>
+            <div className={`col-sm-12 col-md-8 col-lg-6 col-xl-6 m-0 p-0 ${styles.centerbox}`}>
+                <div className={`row justify-content-center p-0 m-0`}>
+                    <div className={`col-sm-11 col-md-11 col-lg-11 col-xl-10`}>
                         <h3 className={`text-center text-uppercase bg-dark text-white rounded p-2`}>
                             <i className="fa fa fa-plus fa-spin"></i> Add Post
                         </h3>
@@ -122,11 +122,14 @@ const Home = () => {
     }
     const LeftSide = () => {
         return (
-            <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{height: '92vh', overflow: 'scroll', borderRight: '0.6px solid #C3C3C3' }}>
+            <div className={`col-sm-11 col-md-4 col-lg-3 col-xl-3 p-0 ${styles.leftbox}`} style={{borderRight: '0.6px solid #C3C3C3' }}>
                 <div>
-                    <h4 className={`font-weight-bold pb-3`}>Your Challenges</h4>
+                    <div className={`mt-2 mb-2 pl-2 pr-2`} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', borderBottom: '0.6px solid #C3C3C3' }}>
+                        <h6 className={`font-weight-bold`}>Your Challenges</h6>
+                        <Link to='/challenges' className={`text-dark font-weight-bold text-center`}>See All</Link>
+                    </div>
                     {products?.length > 0
-                        ? <ul className={`pl-2`}>
+                        ? <ul className={`pl-3`}>
                             {products.map(item => {
                                 return (
                                     <li className={`text-left ${styles.li}`} key={item?.id}>
@@ -140,25 +143,23 @@ const Home = () => {
                                     </li>
                                 )
                             })}
-                            <Link to='/challenges' className={`text-dark font-weight-bold`}>See All</Link>
                         </ul>
                         : <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                     }
-                </div>
-                <div style={{ marginTop: '5vh' }}>
-                    <h4 className={`font-weight-bold`}>Tranding Tags</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
         )
     }
     const RightSide = () => {
         return (
-            <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{height: '92vh', overflow: 'scroll', borderLeft: '0.6px solid #C3C3C3' }}>
+            <div className={`col-sm-11 col-md-4 col-lg-3 col-xl-3 p-0 ${styles.rightbox}`} style={{borderLeft: '0.6px solid #C3C3C3' }}>
                 <div>
-                    <h4 className={`font-weight-bold pb-3`}>Friend Suggestions</h4>
+                    <div className={`mt-2 mb-2 pl-2 pr-2`} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', borderBottom: '0.6px solid #C3C3C3' }}>
+                        <h6 className={`font-weight-bold`}>New Friend</h6>
+                        <Link to='/new-friends' className={`text-dark font-weight-bold text-center`}>See All</Link>
+                    </div>
                     {orders?.length > 0
-                        ? <ul className={`pl-2`}>
+                        ? <ul className={`pl-3`}>
                             {orders.map(item => {
                                 return (
                                     <li className={`text-left ${styles.li}`} key={item?.id}>
@@ -172,14 +173,9 @@ const Home = () => {
                                     </li>
                                 )
                             })}
-                            <Link to='/challenges' className={`text-dark font-weight-bold`}>See All</Link>
                         </ul>
                         : <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                     }
-                </div>
-                <div style={{ marginTop: '5vh' }}>
-                    <h4 className={`font-weight-bold`}>Advertisement</h4>
-                    <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
         )
@@ -237,7 +233,7 @@ const Home = () => {
 
     return (
         <div className={`container-fluid mt-5 pt-2`}>
-            <div className={`row`}>
+            <div className={`row`} style={{height: '92.5vh'}}>
 
                 <LeftSide />
                 <CenteredData />
