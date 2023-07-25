@@ -15,6 +15,7 @@
     width: 50px;
 }
 .userPhotoAlt {
+    border: 0.5px solid #00000044;
     background-color: #DDDDDD44;
     text-transform: uppercase;
     justify-content: center;
@@ -26,7 +27,6 @@
     height: 50px;
     width: 50px;
     margin: 0;
-    border: 0.5px solid #00000044;
 }
 .postDetail {
     justify-content: center;
@@ -40,9 +40,10 @@
     align-items: center;
     display: flex;
 }
-.menuIconButton{
+.menuIconButton {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 .menuIconButton:focus-visible, .menuIconButton:active, .menuIconButton:focus {
     box-shadow: none;
@@ -65,8 +66,8 @@
 
 .commentBox{
     border-bottom: 0.6px solid #C3C3C3;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
     display: flex;
 }
@@ -74,17 +75,10 @@ textarea.textarea::placeholder {
     color: black;
     opacity: 0.3;
 }
-
 .textarea {
     border: 1px solid #C3C3C3;
-    /* letter-spacing: 1.1px; */
-    /* font-weight: 600; */
     border: none;
-    /* min-height: 40px;
-    height: 40px;
-    max-height: 90px; */
 }
-
 .textarea:focus-visible {
     border-color: #C3C3C3;
     box-shadow: none;

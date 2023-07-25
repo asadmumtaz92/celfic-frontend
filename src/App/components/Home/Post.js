@@ -66,7 +66,7 @@ const Post = ({ data, modalDataHandler }) => {
                         onClick={() => { modalDataHandler(data) }}
                         type='submit'
                         data-toggle="modal" data-target="#postDetailModal"
-                        className={`${styles.menuIconButton}`}
+                        className={`p-0 ${styles.menuIconButton}`}
                     >
                         <img src={data?.postMedia} style={{ width: '100%', borderRadius: 5, flex: 1 }} alt='User profile...' />
                     </button>
@@ -113,8 +113,8 @@ const Post = ({ data, modalDataHandler }) => {
                     style={{height: comment.length > 40 ? 80 : 40,}}
                     className={`form-control mr-0 ml-0 pl-1 pr-0 ${styles.textarea}`}
                 ></textarea>
-                {comment && <button onClick={sendCommentHandler} className={`${styles.menuIconButton}`}>
-                    <span className={` ml-1 pr-1`}>{comment && 'Send'}</span>
+                {comment && <button onClick={sendCommentHandler} className={`${styles.menuIconButton} text-uppercase ml-2 font-weight-bold`}>
+                    <span className={``}>{comment && 'Send'}</span>
                 </button>}
             </div>
         </div>
