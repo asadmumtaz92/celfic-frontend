@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import styles from './styles/Post.module.css'
 
 
-const Post = ({ data }) => {
+const Post = ({ data, modalDataHandler }) => {
     
     const [comment, setComment] = useState('')
-
+    const [like, setLike] = useState(false)
     const commentHandler = (event) => {
         setComment(event?.target?.value)
     }
@@ -20,13 +21,13 @@ const Post = ({ data }) => {
             {/* POST HEADER */}
             <div className={`pb-2 ${styles.postHeader}`}>
                 {data?.userPhoto
-                    ? < img src={data?.userPhoto} className={`${styles.userPhoto}`} alt='User profile...' />
+                    ? <img src={data?.userPhoto} className={`${styles.userPhoto}`} alt='User profile...' />
                     : <p className={`${styles.userPhotoAlt}`}>{data?.username.substr(0, 2)}</p>
                 }
                 {/* NAME/DATE/TIME */}
                 <div className={`${styles.postDetail}`}>
                     {/* NAME */}
-                    <h6 className={`text-uppercase m-0 mt-1 font-weight-bold`}>
+                    <h6 className={`m-0 mt-1 font-weight-bold`}>
                         <Link to={`/profile/${data?.username}`} className={`text-dark`}>
                             {data?.username}
                         </Link>
@@ -52,22 +53,37 @@ const Post = ({ data }) => {
             {/* POST DESCRIPTION/MEDIA */}
             <div className="mt-1">
                 {data?.description && <p className={`m-1 pb-1`}>{data?.description}</p>}
-                {data?.postMedia && <img src={data?.postMedia} style={{ width: '100%', borderRadius: 5, flex: 1 }} alt='User profile...' />}
+                {data?.postMedia &&
+                    <button
+                        onClick={() => { modalDataHandler(data)}}
+                        data-toggle="modal" data-target="#postDetailModal"
+                        className={`${styles.menuIconButton}`}
+                    >
+                        <img src={data?.postMedia} style={{ width: '100%', borderRadius: 5, flex: 1 }} alt='User profile...' />
+                    </button>
+                }
             </div>
             {/* POST FOOTER */}
             <div className={`mt-2 ${styles.footerBox}`}>
+                {/* LIKES */}
                 <div className={`text-left ${styles.footerItem}`}>
-                    <button onClick={() => { alert('You liked post') }} className={`${styles.menuIconButton}`}>
-                        <i className="bi bi-heart mr-2" style={{ fontSize: 20 }}></i>
+                    <button onClick={() => setLike(!like)} className={`${styles.menuIconButton}`}>
+                        <i className={`bi ${like ? 'bi-heart-fill' : 'bi-heart'} mr-2`} style={{ fontSize: 20 }}></i>
                     </button>
-                    {data?.likes && data?.likes}
+                    {data?.likes && (like ? data?.likes + 1 : data?.likes)}
                 </div>
+                {/* COMMENTS */}
                 <div className={`text-center ${styles.footerItem}`}>
-                    <button onClick={() => { alert('Open post modal') }} className={`${styles.menuIconButton}`}>
+                    <button
+                        onClick={() => { modalDataHandler(data) }}
+                        data-toggle="modal" data-target="#postDetailModal"
+                        className={`${styles.menuIconButton}`}
+                    >
                         <i className="bi bi-chat mr-2" style={{ fontSize: 20 }}></i>
                     </button>
                     {data?.comments && data?.comments}
                 </div>
+                {/* SHARE */}
                 <div className={`text-center ${styles.footerItem}`}>
                     <button onClick={() => { alert('Open modal for share post') }} className={`${styles.menuIconButton}`}>
                         <i className="bi bi-recycle mr-2" style={{ fontSize: 20 }}></i>
@@ -76,7 +92,7 @@ const Post = ({ data }) => {
                 </div>
             </div>
             <p className={`m-0 p-1`}>
-                {data?.likes && `You and ${data?.likes - 1} other`}
+                {data?.likes && (like ? `You, ${data?.username} and ${data?.likes-1} other` : `${data?.username} and ${data?.likes-1} other`)}
             </p>
 
             <div className={`form-group mb-1 ${styles.commentBox}`}>
