@@ -65,7 +65,7 @@ const Header = () => {
                 </button>
                 <div class="dropdown-menu">
                     <Link class="dropdown-item" to="/settings">Settings</Link>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    {/* <a class="dropdown-item" href="#">Something else here</a> */}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" >
                         <button onClick={logoutHandler} style={{ border: 'none', backgroundColor: 'transparent', marginLeft: -7 }}>
@@ -77,12 +77,12 @@ const Header = () => {
 
             {/* MENU */}
             <div className={`btn-group p-0 ${styles.menuee}`} style={{ height: '100%' }}>
-                <button type="button" className={`mt-1 ${styles.userTabBtn}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" className={`${styles.userTabBtn}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i className="bi bi-list" style={{ fontSize: 29 }}></i>
                 </button>
                 <div class="dropdown-menu">
                     <Link class="dropdown-item" to="/settings">Settings</Link>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    {/* <a class="dropdown-item" href="#">Something else here</a> */}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" >
                         <button onClick={logoutHandler} style={{ border: 'none', backgroundColor: 'transparent', marginLeft: -7 }}>
