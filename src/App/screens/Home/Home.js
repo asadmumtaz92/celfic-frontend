@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
-// import styles from './styles/Home.module.css'
+import { Link } from 'react-router-dom'
+
+import styles from './styles/Home.module.css'
 import Post from '../../components/Home/Post'
+import PostDetailModal from '../../customModals/PostDetailModal'
 
 
 const Home = () => {
 
     const [products, setProducts] = useState([])
     const [orders, setOrders] = useState([])
+    const [modalData, setModalData] = useState({})
     const Posts = [
         {
             id: 1,
@@ -99,15 +103,17 @@ const Home = () => {
 
     const AllPosts = () => {
         return Posts.map(item => {
-            return  <Post data={item} key={item?.id} />
+            return <Post data={item} key={item?.id} modalDataHandler={modalDataHandler} />
         })
     }
-
     const CenteredData = () => {
         return (
             <div className={`col-sm-11 col-md-11 col-lg-6 col-xl-6`}>
                 <div className={`row justify-content-center `}>
-                    <div className={`col-sm-11 col-md-11 col-lg-10 col-xl-10`}>
+                    <div className={`col-sm-11 col-md-11 col-lg-10 col-xl-10`} style={{height: '92vh', overflow:'scroll'}}>
+                        <h3 className={`text-center text-uppercase bg-dark text-white rounded p-2`}>
+                            <i className="fa fa fa-plus fa-spin"></i> Add Post
+                        </h3>
                         <AllPosts />
                     </div>
                 </div>
@@ -116,18 +122,31 @@ const Home = () => {
     }
     const LeftSide = () => {
         return (
-            <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{ borderRight: '0.6px solid #C3C3C3' }}>
+            <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{height: '92vh', overflow: 'scroll', borderRight: '0.6px solid #C3C3C3' }}>
                 <div>
-                    <h4>Your Challenges</h4>
+                    <h4 className={`font-weight-bold pb-3`}>Your Challenges</h4>
                     {products?.length > 0
-                        ? <ul>
-                            {products.map(item => <li className={`text-left`} key={item?.id}>{item?.name}</li> )}
+                        ? <ul className={`pl-2`}>
+                            {products.map(item => {
+                                return (
+                                    <li className={`text-left ${styles.li}`} key={item?.id}>
+                                        <Link to={`/profile/${item?.name}`} className={`${styles.link}`}>
+                                            <img src={item?.logo} className={`${styles.chImg}`} alt='challenge...' />
+                                            <div className={`${styles.chDetail}`}>
+                                                <h6 className={`p-0 m-0 font-weight-bold`}>{item?.name}</h6>
+                                                <span className={`font-weight-normal small`}>City, Country</span>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                            <Link to='/challenges' className={`text-dark font-weight-bold`}>See All</Link>
                         </ul>
                         : <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                     }
                 </div>
-                <div style={{ marginTop: '100vh' }}>
-                    <h4>Tags</h4>
+                <div style={{ marginTop: '5vh' }}>
+                    <h4 className={`font-weight-bold`}>Tranding Tags</h4>
                     <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
@@ -135,30 +154,38 @@ const Home = () => {
     }
     const RightSide = () => {
         return (
-            <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{ borderLeft: '0.6px solid #C3C3C3' }}>
+            <div className={`col-sm-11 col-md-11 col-lg-3 col-xl-3 text-center`} style={{height: '92vh', overflow: 'scroll', borderLeft: '0.6px solid #C3C3C3' }}>
                 <div>
-                    <h4>Suggations</h4>
+                    <h4 className={`font-weight-bold pb-3`}>Friend Suggestions</h4>
                     {orders?.length > 0
-                        ? <ul>
+                        ? <ul className={`pl-2`}>
                             {orders.map(item => {
-                                // let orderData = item?.item
-                                // let userInfo = orderData?.userInfo
-                                // let orderDetail = orderData?.orderDetail
-                                // let paymentDetail = orderData?.paymentDetail
                                 return (
-                                    <li className={`text-left text-uppercase m-2`}>{item?.userInfo?.name}</li>
+                                    <li className={`text-left ${styles.li}`} key={item?.id}>
+                                        <Link to={`/profile/${item?.userInfo?.name}`} className={`${styles.link}`}>
+                                            <img src={'https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2021/06/02/2588537.jpg'} className={`rounded ${styles.chImg}`} alt='challenge...' />
+                                            <div className={`${styles.chDetail}`}>
+                                                <h6 className={`p-0 m-0 font-weight-bold text-uppercase`}>{item?.userInfo?.name}</h6>
+                                                <span className={`font-weight-normal small`}>City, Country</span>
+                                            </div>
+                                        </Link>
+                                    </li>
                                 )
                             })}
+                            <Link to='/challenges' className={`text-dark font-weight-bold`}>See All</Link>
                         </ul>
                         : <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                     }
                 </div>
-                <div style={{ marginTop: '50vh' }}>
-                    <h4>Advertisement</h4>
+                <div style={{ marginTop: '5vh' }}>
+                    <h4 className={`font-weight-bold`}>Advertisement</h4>
                     <p className={`text-center mt-1 font-weight-bold`}><i className="fa fa fa-spinner fa-spin"></i> Loading...</p>
                 </div>
             </div>
         )
+    }
+    const modalDataHandler = (data) => {
+        setModalData(data)
     }
 
     const fetchProducts = async () => {
@@ -182,7 +209,6 @@ const Home = () => {
         }
         setProducts(loadedItems)
     }
-
     const fetchOrders = async () => {
         const response = await fetch('https://reactjs-app-aa583-default-rtdb.firebaseio.com/orders.json')
 
@@ -210,7 +236,7 @@ const Home = () => {
 
 
     return (
-        <div className={`container-fluid mt-5 pt-3`}>
+        <div className={`container-fluid mt-5 pt-2`}>
             <div className={`row`}>
 
                 <LeftSide />
@@ -218,6 +244,9 @@ const Home = () => {
                 <RightSide />
 
             </div>
+
+            <PostDetailModal data={modalData} />
+
         </div>
     )
 }
