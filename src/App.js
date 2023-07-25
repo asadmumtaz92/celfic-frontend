@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <HomeRoute />,
         errorElement: <ErrorPageHome />,
         children: [
-            { path: '', element: <Home />, errorElement: <ErrorPageHome /> }
+            { path: '/home', element: <Home />, errorElement: <ErrorPageHome /> }
         ]
     },
     {
@@ -74,6 +74,14 @@ const router = createBrowserRouter([
         errorElement: <ErrorPageHome />,
         children: [
             { path: '/chat', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is chat page...</h2>, errorElement: <ErrorPageHome />, },
+        ]
+    },
+    {
+        path: '/settings',
+        element: <HomeRoute />,
+        errorElement: <ErrorPageHome />,
+        children: [
+            { path: '/settings', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is setting page...</h2>, errorElement: <ErrorPageHome />, },
         ]
     },
 ])
