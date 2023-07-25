@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import styles from './styles/Header.module.css'
 
@@ -10,10 +10,9 @@ const Header = () => {
     const username = localStorage.getItem('username')
 
     const logoutHandler = () => {
-        alert('Show setting modal')
         localStorage.removeItem('login')
         localStorage.removeItem('username')
-        navigate('/')
+        navigate('/login')
     }
     useEffect(() => {
         const loginStatus = localStorage.getItem('login')
@@ -29,7 +28,7 @@ const Header = () => {
                     className={({ isActive }) => isActive ? styles.activeLink : styles.link}
                     end
                 >
-                    <i className="bi bi-person" style={{ fontSize: 25 }}></i>
+                    <i className="bi bi-person" style={{ fontSize: 27 }}></i>
                 </NavLink>
                 <NavLink to='/home'
                     className={({ isActive }) => isActive ? styles.activeLink : styles.link}
@@ -59,9 +58,22 @@ const Header = () => {
                 {/* <a href='/logout' className={`${styles.link}`}><i className="bi bi-box-arrow-right" style={{fontSize: 25}}></i></a> */}
             </div>
 
-            <button onClick={logoutHandler} className={`${styles.userTabBtn}`}>
-                <i className="bi bi-person mr-2" style={{ fontSize: 25 }}></i> {username}
-            </button>
+            {/* SETTINGS */}
+            <div class="btn-group" style={{height: '100%'}}>
+                <button type="button" className={`${styles.userTabBtn}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i className="bi bi-person mr-2 mt-1" style={{ fontSize: 28, color:'red' }}></i> {username}
+                </button>
+                <div class="dropdown-menu">
+                    <Link class="dropdown-item" to="/settings">Settings</Link>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" >
+                        <button onClick={logoutHandler} style={{ border: 'none', backgroundColor: 'transparent', marginLeft: -7 }}>
+                            Logout <i className="bi bi-lock-fill" style={{ fontSize: 15 }}></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
     )
 }
