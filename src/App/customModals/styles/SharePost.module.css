@@ -1,0 +1,62 @@
+.modaal {
+    font-family: 'Courier New', Courier, monospace;
+}
+.modalTitle {
+    text-align: center;
+    font-weight: 700;
+    width: 100%;
+}
+.mBody {
+    max-height: 30rem;
+    overflow: scroll;
+}
+
+.userListItem {
+    border-bottom: 1px solid lightgray;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-direction: row;
+    display: flex;
+}
+.userListItem:last-child {
+    margin-bottom: 0px;
+}
+.image {
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+}
+.descBox {
+    display: flex;
+    flex: 1;
+}
+.descBox p {
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+.descBox p:first-child {
+    text-align: left !important;
+}
+.chkB {
+    background-color: transparent;
+    border: none;
+}
+.chkB:focus, .chkB:focus-visible, .chkB:active {
+    outline: none;
+    border: none;
+}
+
+.ftr {
+    justify-content: flex-end;
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+}
+.ftr button {
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 900;
+    width: 100%;
+}

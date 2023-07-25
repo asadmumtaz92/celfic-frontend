@@ -94,7 +94,11 @@ const Post = ({ data, modalDataHandler }) => {
                 </div>
                 {/* SHARE */}
                 <div className={`text-center ${styles.footerItem}`}>
-                    <button onClick={() => { alert('Open modal for share post') }} className={`${styles.menuIconButton}`}>
+                    <button
+                        // onClick={() => { alert('Open modal for share post') }}
+                        data-toggle="modal" data-target="#postShareModal"
+                        className={`${styles.menuIconButton}`}
+                    >
                         <i className="bi bi-recycle mr-2" style={{ fontSize: 20 }}></i>
                     </button>
                     {data?.comments && data?.comments}

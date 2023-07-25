@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styles from './styles/Home.module.css'
 import Post from '../../components/Home/Post'
 import PostDetailModal from '../../customModals/PostDetailModal'
+import SharePostModal from '../../customModals/SharePostModal'
 
 
 const Home = () => {
@@ -228,20 +229,47 @@ const Home = () => {
     useEffect(() => {
         fetchProducts()
         fetchOrders()
-    },[])
+    }, [])
+    
+    // START POST SHARE MODAL
+    // const [search, setSearch] = useState('')
+    // const [filteredData, setFilteredData] = useState(orders)
+    // const [selectedUser, setSelectedUser] = useState([])
+    // const searchHandler = () => {
+    //     console.log('runnnnnnn')
+    //     // console.log('val', text)
+    //     // setSearch(text)
+
+    //     // const result = orders.filter(item => item?.userInfo?.name.toLowerCase().includes(search.toLowerCase()))
+
+    //     // if (result.length > 0) {
+    //     //     let res = search.length > 0 ? result : orders
+    //     //     setFilteredData(res)
+    //     // }
+    // }
+    // const addUserHandler = (name) => {
+    //     console.log('name is:', name)
+    //     let newData = {
+    //         id: selectedUser.length,
+    //         name: name
+    //     }
+    //     let updatedArray = [...selectedUser, newData];
+    //     setSelectedUser(updatedArray)
+    // }
+    // END POST SHARE MODAL
 
 
     return (
         <div className={`container-fluid mt-5 pt-2`}>
             <div className={`row`} style={{height: '92.5vh'}}>
-
                 <LeftSide />
                 <CenteredData />
                 <RightSide />
-
             </div>
 
             <PostDetailModal data={modalData} />
+            {/* <SharePostModal data={filteredData.length ? filteredData : orders} value={search} searchHandle={searchHandler} addUserHandler={addUserHandler} /> */}
+            <SharePostModal data={orders} />
 
         </div>
     )
