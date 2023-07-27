@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import styles from './styles/Login.module.css'
 import MyInputComp from '../../components/UI/MyInput'
@@ -47,6 +48,12 @@ const ForgotPassword = () => {
             alert(`Check your ${email} email for varification!`)
         }
     }
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        const loginStatus = localStorage.getItem('login')
+        loginStatus === '1' && navigate('/home')
+    }, [])
 
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import styles from './styles/Login.module.css'
@@ -62,6 +62,11 @@ const Login = () => {
         'https://pbs.twimg.com/media/FQvbi4qXIAwul1A.jpg',
         'https://www.pngkey.com/png/detail/123-1236510_rose-flower-stem-garden-nature-rose-of-nature.png',
     ]
+
+    useEffect(() => {
+        const loginStatus = localStorage.getItem('login')
+        loginStatus === '1' && navigate('/home')
+    }, [])
 
     return (
         <div className={`container-fluid`}>

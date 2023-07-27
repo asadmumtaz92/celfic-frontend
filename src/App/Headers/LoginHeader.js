@@ -1,27 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { NavLink , useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './styles/LoginHeader.module.css'
 
 const Header = () => {
-
-    const navigate = useNavigate()
-    useEffect(() => {
-        const loginStatus = localStorage.getItem('login')
-        loginStatus === '1' && navigate('/home')
-    })
 
     return (
         <div className={`row col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-white ${styles.header}`}>
             <h2 className={`${styles.logo}`}>Celfic</h2>
             <div className={`${styles.menuDiv}`}>
-                <NavLink to='/signup'
+                <NavLink to='/signup' end
                     className={({ isActive }) => isActive ? styles.active : styles.link}
-                    end
                 >Sign Up</NavLink>
-                <NavLink to='/login'
+                <NavLink to='/login' end
                     className={({ isActive }) => isActive ? styles.active : styles.link}
-                    end
                 >Log In</NavLink>
             </div>
         </div>
