@@ -1,4 +1,4 @@
-import MainNavigation from '../components/Navigations/MainNavigation'
+import MainNavigation from '../Navigations/MainNavigation'
 
 const ErrorRootLayout = () => {
     return (
