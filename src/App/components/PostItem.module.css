@@ -1,0 +1,7 @@
+.itemBody {
+    margin: auto auto;
+    width: 70%;
+}
+.item {
+    text-transform: capitalize;
+}
