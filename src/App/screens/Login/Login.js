@@ -187,7 +187,7 @@ const Login = () => {
                                     <div className={`row justify-content-center mt-4`}>
                                         <button type="submit" className={`btn btn-info text-black pr-5 pl-5`} style={{ width: '94%' }}>
                                             {isLoader
-                                                ? 'Submitting...'
+                                                ? <><i className="fa fa fa-plus fa-spin"></i> Processing...</>
                                                 : <span className={`bolder fw-bolder`} style={{ fontWeight: 700, letterSpacing: 1.3, }}>LOG IN</span>
                                             }
                                         </button>
