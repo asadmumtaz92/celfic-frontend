@@ -1,0 +1,28 @@
+.myNetwork{
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+}
+.netowrkItem {
+    text-transform: capitalize;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    padding: 8px 0;
+    display: flex;
+    flex: 1;
+}
+.netowrkItem:hover{
+    background-color: #DDDDDD55;
+}
+.netowrkItem button {
+    background-color: transparent;
+    color: #00000088;
+    font-weight: 600;
+    border: none;
+    width: 95%;
+    text-transform: capitalize;
+}
+.netowrkItem button:focus {
+    outline: none;
+}

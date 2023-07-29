@@ -10,7 +10,8 @@ import ForgotPassword from './App/screens/Login/ForgotPassword'
 import HomeRoute from './App/screens/Home/HomeRoute'
 // import ErrorPageHome from './App/screens/Home/ErrorPageHome'
 import Home from './App/screens/Home/Home'
-import Profile from './App/screens/Home/Profile'
+
+import Profile from './App/screens/Profile/index'
 
 
 const router = createBrowserRouter([

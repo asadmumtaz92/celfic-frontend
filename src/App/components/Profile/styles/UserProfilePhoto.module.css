@@ -1,0 +1,49 @@
+.userInfo{
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+.imageDiv {
+    box-shadow: 0px 0px 5px #C3C3C3;
+    border-radius: 100px;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+    height: 200px;
+    display: flex;
+    width: 200px;
+
+    margin-top: 20px;
+}
+.image {
+    height: 100%;
+    width: 100%;
+}
+
+.usernameDiv {
+    flex-direction: row;
+    display: flex;
+}
+.verifyTic {
+    color: #FF0000;
+    font-size: 20px;
+}
+
+.followBtn {
+    border: 1px solid #FF0000dd;
+    background-color: #FF0000dd;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 6px 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    outline: none;
+}
+.followBtn:focus {
+    outline: none;
+}
+
+.followBtn:hover {
+    background-color: transparent;
+    color: #FF0000dd;
+}
