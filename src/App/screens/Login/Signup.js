@@ -8,6 +8,8 @@ import ImagesBox from '../../components/Login/ImagesBox'
 
 const SignUp = () => {
 
+    const navigate = useNavigate()
+    const [users, setUsers] = useState([])
     const [username, setUsername] = useState('')
     const [usernameError, setUsernameError] = useState(false)
     const [email, setEmail] = useState('')
@@ -16,6 +18,8 @@ const SignUp = () => {
     const [passwordError, setPasswordError] = useState(false)
     const [cPassword, setCPassword] = useState('')
     const [cPasswordError, setCPasswordError] = useState(false)
+    const [isLoader, setIsLoader] = useState(false)
+    const [httpError, setHttpError] = useState('')
 
     const usernameHandler = (event) => {
         var val = event?.target?.value
@@ -71,18 +75,99 @@ const SignUp = () => {
 
     const submitFormHandler = (event) => {
         event.preventDefault()
-        if (!disabled) {
-            let data = {
+        setHttpError('')
+        setIsLoader(true)
+    
+        const addNewUser = async () => {
+            setIsLoader(true)
+            const bodyData = {
                 username: username,
                 email: email,
-                password: password
+                password: password,
+                token: `${username}${email}`,
             }
-            console.log('Data==', data)
-            resetUsestate()
-            alert(`Sign Up Successfully!`)
+            const response = await fetch('https://celfic-d7b8c-default-rtdb.asia-southeast1.firebasedatabase.app/Users.json', {
+                method: 'POST',
+                Headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(bodyData)
+            })
+            console.log('Response:', response)
+            if (response.ok) {
+                alert(`MESSAGE!\nUser created seccessfully!.`)
+                resetUsestate()
+                setIsLoader(false)
+                setHttpError('')
+                setTimeout(() => {
+                    let token = `${username}${email}`;
+                    localStorage.setItem('login', '1')
+                    localStorage.setItem('token', token)
+                    localStorage.setItem('username', username)
+                    navigate('/home')
+                }, 1000)
+            }
+            else {
+                setHttpError(response.statusText)
+                setIsLoader(false)
+            }
+        }
+
+        // Check email is exist or not
+        const result = users.filter(item => item?.email.toLowerCase().includes(email.toLowerCase()))
+        // if email already exist
+        if (result.length > 0) {
+            let chkEmail = false
+            for (const key in result) {
+                result[key].email === email
+                    ? chkEmail = true
+                    : chkEmail = false
+            }
+            if (chkEmail) {
+                setHttpError('This email is allready exist!')
+                setIsLoader(false)
+            }
+            else {
+                setHttpError('Create new account!')
+                setIsLoader(false)
+            }
+        }
+        else {
+            // Check username is exist or not
+            const result = users.filter(item => item?.username.toLowerCase().includes(username.toLowerCase()))
+            // if username already exist
+            if (result.length > 0) {
+                setHttpError('This username is allready exist!')
+                setIsLoader(false)
+            }
+            else {
+                setHttpError('')
+                setIsLoader(false)
+                if (!disabled) {
+                    addNewUser()
+                }
+            }
         }
     }
 
+    const getUserList = async () => {
+        const response = await fetch('https://celfic-d7b8c-default-rtdb.asia-southeast1.firebasedatabase.app/Users.json')
+        if (response.ok) {
+            let data = await response.json()
+            const loadedItems = []
+
+            for (const key in data) {
+                loadedItems.push({
+                    id: key,
+                    username: data[key].username,
+                    email: data[key].email,
+                    token: data[key].token,
+                })
+            }
+            setUsers(loadedItems)
+        }
+        else {
+            throw new Error(response?.statusText)
+        }
+    }
     const images = [
         'https://images.unsplash.com/photo-1561829252-dfd5dbaedcf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZsb3dlcnMlMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
         'https://cdn.pixabay.com/photo/2020/02/28/05/23/aesthetic-4886533_960_720.jpg',
@@ -95,11 +180,12 @@ const SignUp = () => {
         'https://www.pngkey.com/png/detail/123-1236510_rose-flower-stem-garden-nature-rose-of-nature.png',
     ]
 
-    const navigate = useNavigate()
     useEffect(() => {
         const loginStatus = localStorage.getItem('login')
         loginStatus === '1' && navigate('/home')
+        getUserList()
     }, [navigate])
+
 
     return (
         <div className={`container-fluid`}>
@@ -120,6 +206,7 @@ const SignUp = () => {
                                 </div>
                                 {/* FORM */}
                                 <form className={`${styles.myForm} mt-4`} onSubmit={submitFormHandler}>
+                                    {httpError && <p style={{ margin: 0, color: 'red' }} className={`text-small text-center mb-2`}>{httpError}</p>}
                                     <MyInputComp
                                         label='Username'
                                         type='text'
@@ -165,7 +252,10 @@ const SignUp = () => {
 
                                     <div className={`row justify-content-center mt-4`}>
                                         <button type="submit" className={`btn btn-info text-black pr-5 pl-5`} style={{ width: '94%' }}>
-                                            <span className={`bolder fw-bolder`} style={{ fontWeight: 700, letterSpacing: 1.3, }}>SIGN UP</span>
+                                            {isLoader
+                                                ? <><i className="fa fa fa-plus fa-spin"></i> Processing...</>
+                                                : <span className={`bolder fw-bolder`} style={{ fontWeight: 700, letterSpacing: 1.3, }}>SIGN UP</span>
+                                            }
                                         </button>
                                     </div>
                                 </form>
