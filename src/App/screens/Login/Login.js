@@ -9,6 +9,10 @@ import ImagesBox from '../../components/Login/ImagesBox'
 const Login = () => {
 
     const navigate = useNavigate()
+    const [users, setUsers] = useState([])
+    const [isLoader, setIsLoader] = useState(false)
+    const [httpError, setHttpError] = useState('')
+
     const [username, setUsername] = useState('')
     const [usernameError, setUsernameError] = useState(false)
     const [password, setPassword] = useState('')
@@ -43,11 +47,57 @@ const Login = () => {
 
     const submitFormHandler = (event) => {
         event.preventDefault()
+        setHttpError('')
+        setIsLoader(true)
+
         if (!disabled) {
-            restart()
-            localStorage.setItem('login', '1')
-            localStorage.setItem('username', username)
-            navigate('/home')
+            // check username is exist or not
+            const result = users.filter(item => item?.username.toLowerCase().includes(username.toLowerCase()))
+            if (result.length > 0) {
+                // check username matched or not
+                let chkUser = false
+                for (const key in result) {
+                    // if ((result[key].username === username) && (result[key].password === password)) {
+                    //     chkUser = true
+                    // }
+                    result[key].username === username
+                        ? chkUser = true
+                        : chkUser = false
+                }
+                if (chkUser) {
+                    // check password matched or not
+                    let chkPw = false
+                    for (const key in result) {
+                        if ((result[key].password === password) && result[key].username === username) {
+                            chkPw = true
+                        }
+                    }
+                    // if password matched
+                    if (chkPw) {
+                        setTimeout(() => {
+                            restart()
+                            localStorage.setItem('login', '1')
+                            localStorage.setItem('token', result[0].token)
+                            localStorage.setItem('username', username)
+                            navigate('/home')
+                            setIsLoader(false)
+                            setHttpError('')
+                        }, 500);
+                    }
+                    else {
+                        setHttpError('You enter invalid password!')
+                        setIsLoader(false)
+                    }
+                }
+                else {
+                    setHttpError('You enter invalid username!')
+                    setIsLoader(false)
+                }
+            }
+            else {
+                setHttpError('You enter invalid username!')
+                setIsLoader(false)
+            }
         }
     }
 
@@ -63,10 +113,34 @@ const Login = () => {
         'https://www.pngkey.com/png/detail/123-1236510_rose-flower-stem-garden-nature-rose-of-nature.png',
     ]
 
+    const getUserList = async () => {
+        const response = await fetch('https://celfic-d7b8c-default-rtdb.asia-southeast1.firebasedatabase.app/Users.json')
+        if (response.ok) {
+            let data = await response.json()
+            const loadedItems = []
+
+            for (const key in data) {
+                loadedItems.push({
+                    id: key,
+                    username: data[key].username,
+                    email: data[key].email,
+                    token: data[key].token,
+                    password: data[key].password,
+                })
+            }
+            setUsers(loadedItems)
+        }
+        else {
+            throw new Error(response?.statusText)
+        }
+    }
+
     useEffect(() => {
         const loginStatus = localStorage.getItem('login')
         loginStatus === '1' && navigate('/home')
+        getUserList()
     }, [navigate])
+
 
     return (
         <div className={`container-fluid`}>
@@ -87,6 +161,8 @@ const Login = () => {
                                 </div>
                                 {/* FORM */}
                                 <form className={`${styles.myForm} mt-5`} onSubmit={submitFormHandler}>
+                                    {httpError && <p style={{ margin: 0, color: 'red' }} className={`text-center mb-2`}>{httpError}</p>}
+                                    
                                     <MyInput
                                         label='Username'
                                         type='text'
@@ -110,7 +186,10 @@ const Login = () => {
 
                                     <div className={`row justify-content-center mt-4`}>
                                         <button type="submit" className={`btn btn-info text-black pr-5 pl-5`} style={{ width: '94%' }}>
-                                            <span className={`bolder fw-bolder`} style={{ fontWeight: 700, letterSpacing: 1.3, }}>LOG IN</span>
+                                            {isLoader
+                                                ? 'Submitting...'
+                                                : <span className={`bolder fw-bolder`} style={{ fontWeight: 700, letterSpacing: 1.3, }}>LOG IN</span>
+                                            }
                                         </button>
                                     </div>
                                 </form>
