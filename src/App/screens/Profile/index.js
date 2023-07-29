@@ -10,11 +10,12 @@ const Profile = () => {
 
     const param = useParams();
     const username = param?.usename
+    const un = localStorage.getItem('username')
 
     const userInfo = {
         username: username,
         fullname: 'Your fullname',
-        isOnwer: false,
+        isOwner: username === un ? true : false,
         image: `https://cdn.britannica.com/92/215392-050-96A4BC1D/Australian-actor-Chris-Hemsworth-2019.jpg`,
         gender: 'male',
         isFollow: true,

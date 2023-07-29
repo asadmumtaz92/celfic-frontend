@@ -25,7 +25,7 @@ const UserProfilePhoto = ({ userInfo }) => {
 
             {/* EDIT / FOLLOW */}
             <div className={`mt-4`}>
-                {userInfo?.isOnwer
+                {userInfo?.isOwner
                     ? <button type='submit' className={`${styles.followBtn} rounded`}> EDIT </button>
                     : <button type='submit' className={`${styles.followBtn} rounded`}> {userInfo?.isFollow ? 'FOLLOWINg' : 'FOLLOW'} </button>
                 }
