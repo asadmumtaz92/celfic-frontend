@@ -12,6 +12,7 @@ const Header = () => {
     const logoutHandler = () => {
         localStorage.removeItem('login')
         localStorage.removeItem('username')
+        localStorage.removeItem('token')
         navigate('/login')
     }
     useEffect(() => {
