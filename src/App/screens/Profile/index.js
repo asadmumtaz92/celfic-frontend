@@ -121,7 +121,7 @@ const Profile = () => {
 
     
     return (
-        <div className={`container-fluid mt-5 pt-2`} style={{ minHeight: '92.5vh' }}>
+        <div className={`container-fluid`} style={{ minHeight: '92.5vh' }}>
             <div className={`row justify-content-center col-sm-12 col-md-12 col-lg-12 col-xl-12 m-0 p-0`}>
                 {/* USER INFO */}
                 <div className={`col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0`}>

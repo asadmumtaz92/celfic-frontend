@@ -59,7 +59,7 @@ const ForgotPassword = () => {
     return (
         <div className={`container-flud`}>
 
-            <div className={`row justify-content-center mt-5 pt-5`}>
+            <div className={`row justify-content-center`}>
                 <div className={`col-sm-7 col-md-5 col-lg-4 col-xl-4 m-2 p-4 rounded ${styles.rightDiv}`}>
                     <div className={`mt-2 ${styles.avatar}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="#FFFFFF" className="bi bi-person-fill" viewBox="0 0 16 16">

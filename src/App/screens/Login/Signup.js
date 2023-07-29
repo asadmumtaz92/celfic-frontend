@@ -104,7 +104,7 @@ const SignUp = () => {
     return (
         <div className={`container-fluid`}>
 
-            <div className={`row justify-content-center mt-5 pt-1`}>
+            <div className={`row justify-content-center`}>
                 <div className={`row col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 p-4`}>
                     {/* LEFT BOX FOR IMAGES */}
                     <ImagesBox images={images} />

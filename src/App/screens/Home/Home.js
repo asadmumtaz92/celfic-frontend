@@ -260,7 +260,7 @@ const Home = () => {
 
 
     return (
-        <div className={`container-fluid mt-5 pt-2`}>
+        <div className={`container-fluid`}>
             <div className={`row`} style={{height: '92.5vh'}}>
                 <LeftSide />
                 <CenteredData />
@@ -275,4 +275,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default Home
