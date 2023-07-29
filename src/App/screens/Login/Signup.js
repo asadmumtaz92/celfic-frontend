@@ -99,7 +99,7 @@ const SignUp = () => {
     useEffect(() => {
         const loginStatus = localStorage.getItem('login')
         loginStatus === '1' && navigate('/home')
-    }, [])
+    }, [navigate])
 
     return (
         <div className={`container-fluid`}>
