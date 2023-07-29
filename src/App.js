@@ -13,6 +13,8 @@ import Home from './App/screens/Home/Home'
 
 import Profile from './App/screens/Profile/index'
 
+import Globe from './App/screens/Globe/Globe'
+
 
 const router = createBrowserRouter([
     {
@@ -31,7 +33,7 @@ const router = createBrowserRouter([
                     { path: 'home', index: true, element: <Home /> },
                     // { path: '/home', index: true, element: <Home />, loader: eventsLoader, action: eventAction,}
                     { path: 'profile/:usename', element: <Profile /> },
-                    { path: 'globe', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is globe page...</h2> },
+                    { path: 'globe', element: <Globe /> },
                     { path: 'notifications', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is notifications page...</h2> },
                     { path: 'settings', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is setting page...</h2> },
                     { path: 'challenges', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is challenges page...</h2> },

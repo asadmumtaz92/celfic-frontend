@@ -1,0 +1,11 @@
+.ip {
+    border-color: #C3C3C3;
+}
+.ip:focus, .ip:focus-visible {
+    outline: none;
+    box-shadow: none;
+    border-color: #C3C3C3;
+}
+.reset:active, .reset:focus {
+    outline: none;
+}
