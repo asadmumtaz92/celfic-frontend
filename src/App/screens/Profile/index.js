@@ -13,7 +13,7 @@ const Profile = () => {
 
     const userInfo = {
         username: username,
-        fullname: 'malik asad mumtaz',
+        fullname: 'Your fullname',
         isOnwer: false,
         image: `https://cdn.britannica.com/92/215392-050-96A4BC1D/Australian-actor-Chris-Hemsworth-2019.jpg`,
         gender: 'male',
