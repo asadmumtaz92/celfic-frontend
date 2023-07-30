@@ -10,6 +10,7 @@ import ForgotPassword from './App/screens/Login/ForgotPassword'
 import HomeRoute from './App/screens/Home/HomeRoute'
 // import ErrorPageHome from './App/screens/Home/ErrorPageHome'
 import Home from './App/screens/Home/Home'
+import Notifications from './App/screens/Home/Notifications'
 
 import Profile from './App/screens/Profile/index'
 
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
                     // { path: '/home', index: true, element: <Home />, loader: eventsLoader, action: eventAction,}
                     { path: 'profile/:usename', element: <Profile /> },
                     { path: 'globe', element: <Globe /> },
-                    { path: 'notifications', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is notifications page...</h2> },
+                    {
+                        path: 'notifications', element: <Notifications /> },
                     { path: 'settings', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is setting page...</h2> },
                     { path: 'challenges', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is challenges page...</h2> },
                     { path: 'new-friends', element: <h2 className='mt-5 pt-3 text-center mb-5'>This is new - friend page...</h2> },

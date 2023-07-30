@@ -1,0 +1,54 @@
+.head {
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    border-bottom: 0.5px solid #00000055;
+}
+.btn {
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    padding: 3px 20px;
+    font-weight: 600;
+    border: none;
+}
+.btn:hover {
+    background-color: #C3C3C355;
+}
+.btn:focus {
+    outline: none;
+    border: none;
+}
+.active {
+    background-color: #C3C3C355;
+}
+
+.notifiBtn {
+    box-shadow: 0px 0px 4px #00000055;
+    background-color: transparent;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    border: none;
+}
+.notifi:focus {
+    outline: none;
+    border: none;
+}
+.indicator {
+    border-radius: 5px;
+    height: 10px;
+    width: 10px;
+}
+.uPhoto {
+    border-radius: 30px;
+    height: 60px;
+    width: 60px;
+}
+.notiDetail {
+    flex: 1;
+}
+.notiMedia {
+    height: 65px;
+    width: 60px;
+}
