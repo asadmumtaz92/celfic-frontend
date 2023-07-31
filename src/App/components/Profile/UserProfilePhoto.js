@@ -1,10 +1,11 @@
+import React, { useState } from 'react'
 import styles from './styles/UserProfilePhoto.module.css'
 
 const UserProfilePhoto = ({ userInfo }) => {
 
     const male = "https://srcwap.com/wp-content/uploads/2022/08/no-avatar.webp"
     const femaleIcon = "https://media.istockphoto.com/id/1273297923/vector/default-avatar-profile-icon-grey-photo-placeholder-hand-drawn-modern-woman-avatar-profile.jpg?s=170667a&w=0&k=20&c=GesW_bJUpMCbPQl_avyC1d8nlWZQA-48AflxAL-D6zE="
-
+    const [follow, setFollow] = useState(!userInfo?.isFollow)
     return (
         <div className={`${styles.userInfo}`}>
             <div className={`${styles.imageDiv}`}>
@@ -27,7 +28,7 @@ const UserProfilePhoto = ({ userInfo }) => {
             <div className={`mt-4`}>
                 {userInfo?.isOwner
                     ? <button type='submit' className={`${styles.followBtn} rounded`}> EDIT </button>
-                    : <button type='submit' className={`${styles.followBtn} rounded`}> {userInfo?.isFollow ? 'FOLLOWINg' : 'FOLLOW'} </button>
+                    : <button onClick={() => { setFollow(!follow)}} type='submit' className={`${styles.followBtn} rounded`}> {follow ? 'FOLLOWINg' : 'FOLLOW'} </button>
                 }
             </div>
         </div>
