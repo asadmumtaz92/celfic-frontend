@@ -31,9 +31,10 @@
     display: flex;
     border: none;
 }
-.notifi:focus {
+.notifiBtn:focus, .notifiBtn:focus-visible {
     outline: none;
     border: none;
+    box-shadow: 0px 0px 4px #00000055;
 }
 .indicator {
     border-radius: 5px;

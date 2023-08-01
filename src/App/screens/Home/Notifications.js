@@ -46,7 +46,10 @@ const Notifications = () => {
     const NotificationItem = (item) => {
         const data = item?.item
         return (
-            <button onClick={()=>{alert(data?.username+' '+data?.content)}} className={`col-sm-12 col-md-12 col-lg-12 col-xl-12 p-2 mb-3 rounded ${styles.notifiBtn}`}>
+            <button
+                onClick={() => { alert(data?.username + ' ' + data?.content) }}
+                className={`col-sm-12 col-md-12 col-lg-12 col-xl-12 p-2 mb-3 rounded ${styles.notifiBtn}`}
+            >
                 <div className={`mr-2 ${styles.indicator}`} style={{ backgroundColor: data?.isSeen ? 'lightgray' : 'red' }} />
                 <img className={`${styles.uPhoto}`} src={`${data?.userPhoto ? data?.userPhoto : `https://srcwap.com/wp-content/uploads/2022/08/no-avatar.webp`}`} alt='user profile icon' />
                 <p className={`m-0 text-small text-left mr-2 ml-2 ${styles.notiDetail}`}>
