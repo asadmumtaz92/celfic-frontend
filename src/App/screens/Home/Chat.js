@@ -63,7 +63,7 @@ const Chat = () => {
     }
     const sendMessage = (event) => {
         event.preventDefault()
-        if (message.length < 1) {
+        if (message.trim().length < 1) {
             return
         }
 
@@ -109,7 +109,7 @@ const Chat = () => {
             <div className={`${styles.topView}`}>
                 {/* HEADER */}
                 <div className={` text-white p-2 ${styles.msgHeader}`}>
-                    <img src={activeUser?.userPhoto ? activeUser?.userPhoto : userIcon} className={`${styles.userPhoto}`} />
+                    <img src={activeUser?.userPhoto ? activeUser?.userPhoto : userIcon} className={`${styles.userPhoto}`} alt='user header pho to' />
                     <div className={`ml-3 ${styles.headerUserDetail}`}>
                         <h4 className={`m-0 text-capitalize`}>
                             <Link className={`text-white`} to={`/profile/${activeUser?.username}`}>
@@ -143,7 +143,7 @@ const Chat = () => {
                 <div className={`m-0 p-0 pl-3 pr-3 ${styles.messageList}`}>
                     {sendedMessage.map(item => {
                         return (
-                            <div key={item?.id} className={`p-2 mb-2 ${styles.msgBox} ${item?.id % 2 == 0 && styles.receiverMsg}`}>
+                            <div key={item?.id} className={`p-2 mb-2 ${styles.msgBox} ${item?.id % 2 === 0 && styles.receiverMsg}`}>
                                 <p className={`m-0 p-1`}>{item?.message}</p>
                             </div>
                         )
