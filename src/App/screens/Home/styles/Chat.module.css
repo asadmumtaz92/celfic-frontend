@@ -1,0 +1,171 @@
+/* CHAT LIST */
+.chatList {
+    border-right: 0.6px solid #ced4da;
+    overflow-x: hidden;
+    max-height: 95vh;
+    overflow: scroll;
+}
+.chatBtnItem {
+    border: none;
+    border-top: 0.6px solid #ced4da;
+    background-color: transparent;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    display: flex;
+    box-shadow: none;
+}
+.chatBtnItem:last-child {
+    border-bottom: 0.6px solid #00000055;
+}
+.chatBtnItem:last-child:focus {
+    border-bottom: 0.6px solid #00000055;
+}
+.chatBtnItem:focus {
+    outline: none;
+    border: none;
+    border-top: 0.6px solid #00000055;
+}
+.indicator {
+    border-radius: 5px;
+    height: 8px;
+    width: 8px;
+}
+.uPhoto {
+    border-radius: 25px;
+    border: 1px solid;
+    height: 50px !important;
+    width: 50px !important;
+}
+.chatDetail {
+    text-align: left;
+    display: block;
+}
+.sMsg {
+    margin-top: -7px !important;
+}
+
+
+/* CONTENT AREA */
+.messageArea {
+    flex-direction: column;
+    max-height: 93.5vh;
+    min-height: 93.5vh;
+    display: flex;
+    flex: 1;
+}
+.topView {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+}
+/* HEADER */
+.msgHeader {
+    justify-content: space-between;
+    background-color: red;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+}
+.userPhoto {
+    border-radius: 4px;
+    height: 50px;
+    width: 50px;
+}
+.headerUserDetail {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+}
+.headerMenu {
+    flex-direction: row;
+    display: flex;
+}
+.menuBtn {
+    background-color: transparent;
+    box-shadow: none;
+    color: #FFFFFF;
+    border: none;
+}
+.menuBtn:focus {
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+.ddItem:active {
+    background-color: transparent;
+    box-shadow: none;
+    color: black;
+    outline: none;
+    border: none;
+}
+/* MESSAGE LIST */
+.messageList {
+    border-bottom: 0.6px solid #ced4da;
+    flex-direction: column-reverse;
+    max-height: 76.5vh;
+    overflow: scroll;
+    display: flex;
+    flex: 1;
+}
+.messageList .msgBox:last-child {
+    margin-top: 10px;
+}
+.messageList .msgBox:first-child {
+    margin-bottom: 0px !important;
+}
+.msgBox {
+    background-color: #C3C3C355;
+    align-self: flex-start;
+    border-radius: 20px;
+    width: fit-content;
+    max-width: 70%;
+}
+.receiverMsg {
+    background-color: #e8797955;
+    align-self: flex-end;
+}
+
+/* WRITE MESSAGE */
+.rightMsgView {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+}
+.form {
+    flex: 1;
+}
+.ipView {
+    flex-direction: row;
+    margin: 0px auto;
+    display: flex;
+}
+.ip:focus-visible {
+    border: 1px solid #ced4da;
+    box-shadow: none;
+}
+.emoji {
+    margin-left: 15px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    box-shadow: none;
+}
+.emoji:focus{
+    outline: none;
+        box-shadow: none;
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+    .chatDetail {
+        display: none;
+    }
+    .searchView{
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+}
